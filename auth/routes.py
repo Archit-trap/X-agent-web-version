@@ -1,6 +1,6 @@
 import os
 
-from flask import Blueprint, request, jsonify, redirect, url_for, session
+from flask import Blueprint, request, jsonify, redirect, session
 import secrets, base64, hashlib , requests
 
 from backend.config import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL
@@ -8,13 +8,6 @@ from auth.storage import user_tokens
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-# Print code verifier and challenge once when app starts
-# _startup_code_verifier = secrets.token_urlsafe(40)
-# _startup_code_challenge = base64.urlsafe_b64encode(
-#     hashlib.sha256(_startup_code_verifier.encode()).digest()
-# ).rstrip(b'=').decode()
-# print(f"Startup Code Verifier: {_startup_code_verifier}")
-# print(f"Startup Code Challenge: {_startup_code_challenge}")
 
 @auth_bp.route('/login')
 def login():
