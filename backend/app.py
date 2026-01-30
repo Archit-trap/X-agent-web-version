@@ -10,6 +10,8 @@ from flask_cors import CORS   # ✅ ADD THIS
 from auth.routes import auth_bp
 from routes.posts import posts_bp
 from routes.mentions import mentions_bp
+from routes.filtered_posts import filtered_bp
+from routes.replies import replies_bp
 from db import Base, engine
 
 
@@ -37,6 +39,10 @@ Session(app)
 app.register_blueprint(auth_bp, url_prefix="/auth")
 app.register_blueprint(posts_bp)
 app.register_blueprint(mentions_bp)
+app.register_blueprint(filtered_bp)
+
+app.register_blueprint(replies_bp)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -17,6 +17,7 @@ class Post(Base):
 
     id = Column(Integer, primary_key=True) 
     text = Column(Text, nullable=False)
+    author_id = Column(String, index=True , nullable=True , default=None)
 
 
 

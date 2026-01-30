@@ -83,6 +83,19 @@ const Dashboard = () => {
             Generate Replies
           </button>
         </div>
+
+        <div style={styles.card}>
+          <h2 style={styles.cardTitle}>Filtered Posts</h2>
+          <p style={styles.cardDescription}>
+            View posts filtered by relevance to specific criteria like hiring and job opportunities. Prioritize high-value content.
+          </p>
+          <button
+            style={styles.cardButton}
+            onClick={() => navigate("/filtered-posts")}
+          >
+            View Filtered Posts
+          </button>
+        </div>
       </div>
 
       <button
@@ -104,8 +117,8 @@ const Dashboard = () => {
 
 const styles = {
   page: {
-    height : "100vh",
-    width : "100vw",
+    height: "100vh",
+    width: "100vw",
     background: "#0b0b0b",
     color: "#fff",
     padding: "40px",

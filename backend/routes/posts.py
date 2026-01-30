@@ -16,7 +16,8 @@ def recent_posts():
         for post_dict in posts:
             post = Post(
                 id=int(post_dict['id']),
-                text=post_dict['text']
+                text=post_dict['text'],
+                author_id=int(post_dict['author_id'])
             )
 
             db.add(post)

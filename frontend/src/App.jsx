@@ -4,6 +4,7 @@ import Dashboard from "./pages/dashboard";
 import Mentions from "./pages/Mentions";
 import RecentPosts from "./pages/Recent_Posts";
 import GenerateReplies from "./pages/Generate_Replies";
+import FilteredPosts from "./pages/Filtered_posts";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/mentions" element={<Mentions />} />
         <Route path="/recent-posts" element={<RecentPosts />} />
         <Route path="/generate-replies" element={<GenerateReplies />} />
+        <Route path="/filtered-posts" element={<FilteredPosts />} />
       </Routes>
     </BrowserRouter>
   );
