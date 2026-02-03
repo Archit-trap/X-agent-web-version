@@ -31,11 +31,15 @@ const GenerateReplies = () => {
     try {
       const res = await fetch("http://localhost:5000/api/replies/list");
       const data = await res.json();
-      setReplies(data);
+
+      // 🔑 force array
+      setReplies(Array.isArray(data) ? data : data.replies || []);
     } catch (error) {
       console.error("Error fetching replies:", error);
+      setReplies([]); // safety net
     }
   };
+
 
   const handleGenerate = async () => {
     setGenerating(true);

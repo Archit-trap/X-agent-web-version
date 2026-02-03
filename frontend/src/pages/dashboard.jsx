@@ -96,6 +96,18 @@ const Dashboard = () => {
             View Filtered Posts
           </button>
         </div>
+        <div style={styles.card}>
+          <h2 style={styles.cardTitle}>Posting</h2>
+          <p style={styles.cardDescription}>
+            View generated replies and auto-post them to X. Manage your outgoing content efficiently.
+          </p>
+          <button
+            style={styles.cardButton}
+            onClick={() => navigate("/posting")}
+          >
+            Go to Posting
+          </button>
+        </div>
       </div>
 
       <button

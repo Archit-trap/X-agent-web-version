@@ -36,6 +36,8 @@ class Reply(Base):
     id = Column(Integer, primary_key=True)  
     post_text = Column(Text, nullable=False)
     reply_text = Column(Text, nullable=False)
+    # parent_id = Column(Integer , nullable=False)
+    status = Column(String, nullable=True , default="generated")
 
 
 class Mention(Base):

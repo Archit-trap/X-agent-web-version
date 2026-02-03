@@ -12,7 +12,9 @@ from routes.posts import posts_bp
 from routes.mentions import mentions_bp
 from routes.filtered_posts import filtered_bp
 from routes.replies import replies_bp
+from routes.posting import posting_bp
 from db import Base, engine
+import backend.models  # Ensure models are registered
 
 
 # Create all database tables
@@ -42,6 +44,7 @@ app.register_blueprint(mentions_bp)
 app.register_blueprint(filtered_bp)
 
 app.register_blueprint(replies_bp)
+app.register_blueprint(posting_bp)
 
 
 if __name__ == "__main__":
