@@ -33,11 +33,12 @@ class FilteredPost(Base):
 class Reply(Base):
     __tablename__ = "replies"
 
-    id = Column(Integer, primary_key=True)  
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    target_tweet_id = Column(String, nullable=False, index=True)  # 👈 REQUIRED
     post_text = Column(Text, nullable=False)
     reply_text = Column(Text, nullable=False)
-    # parent_id = Column(Integer , nullable=False)
-    status = Column(String, nullable=True , default="generated")
+    status = Column(String, default="generated")
+
 
 
 class Mention(Base):

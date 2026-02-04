@@ -38,7 +38,7 @@ def filtered_posts():
             filtered = FilteredPost(
                 id=post.id,
                 text=post.text,
-                author_id=None,
+                author_id=post.author_id,
                 score=round(score * 100, 2),
             )
 

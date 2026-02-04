@@ -29,47 +29,71 @@ final_chain = chain_theme | chain_reply
 
 def generate_replies_for_filtered_posts():
     db = SessionLocal()
-    generated_replies = []
+    # generated_replies = []
     
-    try:
-        filtered_posts = db.query(FilteredPost).all()
+    # try:
+    #     filtered_posts = db.query(FilteredPost).all()
         
-        for post in filtered_posts:
-            try:
-                # Check if reply already exists to avoid re-generation expense (optional optimization)
-                existing_reply = db.query(Reply).filter(Reply.id == post.id).first()
-                if existing_reply:
-                    continue
+    #     for post in filtered_posts:
+    #         try:
+    #             # Check if reply already exists to avoid re-generation expense (optional optimization)
+    #             existing_reply = db.query(Reply).filter(Reply.id == post.id).first()
+    #             if existing_reply:
+    #                 continue
 
-                result = final_chain.invoke({"post_text": post.text})
+    #             result = final_chain.invoke({"post_text": post.text})
 
-                reply = Reply(
-                    post_text=post.text,
-                    reply_text=result,
-                    id=post.id
-                )
+    #             reply = Reply(
+    #                 target_tweet_id=str(post.id),
+    #                 post_text=post.text,
+    #                 reply_text=result,
+    #                 status="generated"
+    #             )
 
-                db.add(reply)
-                db.commit()
-                print(f"Saved reply for post ID {post.id} to database.")
+
+    #             db.add(reply)
+    #             db.commit()
+    #             print(f"Saved reply for post ID {post.id} to database.")
                 
-                generated_replies.append({
-                    "id": reply.id,
-                    "post_text": reply.post_text,
-                    "reply_text": reply.reply_text
-                })
+    #             generated_replies.append({
+    #                 "id": reply.id,
+    #                 "post_text": reply.post_text,
+    #                 "reply_text": reply.reply_text
+    #             })
 
-            except IntegrityError:
-                db.rollback()
-                print(f"Reply for post ID {post.id} already exists in the database. Skipping.")
+    #         except IntegrityError:
+    #             db.rollback()
+    #             print(f"Reply for post ID {post.id} already exists in the database. Skipping.")
             
-            except Exception as e:
-                db.rollback()
-                print(f"Error saving reply for post ID {post.id}: {e}")
+    #         except Exception as e:
+    #             db.rollback()
+    #             print(f"Error saving reply for post ID {post.id}: {e}")
                 
-    except Exception as e:
-        print(f"Error checking filtered posts: {e}")
-    finally:
-        db.close()
-        
-    return generated_replies
+    # except Exception as e:
+    #     print(f"Error checking filtered posts: {e}")
+    # finally:
+    #     db.close()
+
+    reply = Reply(
+                    target_tweet_id=str(2014778229664711050),
+                    post_text='''
+                    
+                        TL;DR:
+
+                        You never know who you’re really talking to.
+
+                        I was combing through some old LinkedIn messages to reach out to folks to demo Ghost Testing.
+
+                        There was this guy I interviewed with for a job a startup he was hiring for years ago. (I didn’t get it)
+
+                        I DM’d him to see i''',
+
+
+                    reply_text="hello",
+                    status="generated"
+                )
+    
+    db.add(reply)
+    db.commit()
+    db.close()       
+    return 
