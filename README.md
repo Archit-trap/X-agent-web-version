@@ -1,20 +1,6 @@
 <!-- Improved compatibility of back to top link -->
 <a id="readme-top"></a>
 
-<!-- PROJECT SHIELDS -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![project_license][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-<br />
-<div align="center">
-  <a href="https://github.com/Archit-vibes/X-agent-web-version">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
 <h3 align="center">X Lead Qualification & Auto-Reply Agent</h3>
 
   <p align="center">
@@ -118,3 +104,34 @@ Follow the steps below to run the project locally.
    ```sh
    git clone https://github.com/Archit-vibes/X-agent-web-version.git
    cd X-agent-web-version
+
+2. Backend Setup
+   ```python
+   cd backend
+    python -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+
+3. Environment configuration
+   Create a .env file inside backend/:
+   ```env
+   X_CLIENT_ID=YOUR_X_CLIENT_ID
+   X_CLIENT_SECRET=YOUR_X_CLIENT_SECRET
+   
+4. Start the backend server
+   ```python
+   python app.py
+
+5. Frontend setup
+   ```sh
+   cd frontend
+   npm install
+   npm run dev
+
+Frontend runs at: http://localhost:5173
+Backend runs at: http://localhost:5000
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
